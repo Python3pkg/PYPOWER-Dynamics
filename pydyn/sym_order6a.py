@@ -34,7 +34,7 @@ class sym_order6a:
         self.parser(filename)
         
         # Convert impedances and H to 100MVA base
-        if 'MVA_Rating' in self.params.keys():
+        if 'MVA_Rating' in list(self.params.keys()):
             base_mva = self.params['MVA_Rating']
             self.params['H'] = self.params['H'] * base_mva / 100
             self.params['Ra'] = self.params['Ra'] * 100 / base_mva

@@ -28,7 +28,7 @@ class asym_2cage:
         self.parser(filename)
         
         # Convert parameters to 100MVA base
-        if 'MVA_Rating' in self.params.keys():
+        if 'MVA_Rating' in list(self.params.keys()):
             self.base_mva = self.params['MVA_Rating']
         else:
             self.base_mva = 100
@@ -312,4 +312,4 @@ class asym_2cage:
         
         if round(dEdp,6) != 0 or round(dEqp,6) != 0 or round(ds,6) != 0:
             print('Warning: differential equations not zero on initialisation...')
-            print('dEdp = ' + str(dEdp) + ', dEqp = ' + str(dEqp) + ', ds = ' + str(ds))
+            print(('dEdp = ' + str(dEdp) + ', dEqp = ' + str(dEqp) + ', ds = ' + str(ds)))

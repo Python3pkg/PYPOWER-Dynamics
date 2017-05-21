@@ -43,7 +43,7 @@ def run_sim(ppc, elements, dynopt = None, events = None, recorder = None):
     
     # Get version information
     ver = pydyn_ver()
-    print('PYPOWER-Dynamics ' + ver['Version'] + ', ' + ver['Date'])
+    print(('PYPOWER-Dynamics ' + ver['Version'] + ', ' + ver['Date']))
     
     # Program options
     if dynopt:
@@ -63,7 +63,7 @@ def run_sim(ppc, elements, dynopt = None, events = None, recorder = None):
     # Make lists of current injection sources (generators, external grids, etc) and controllers
     sources = []
     controllers = []
-    for element in elements.values():
+    for element in list(elements.values()):
         if element.__module__ in ['pydyn.sym_order6a', 'pydyn.sym_order6b', 'pydyn.sym_order4', 'pydyn.ext_grid', 'pydyn.vsc_average', 'pydyn.asym_1cage', 'pydyn.asym_2cage']:
             sources.append(element)
             
@@ -138,7 +138,7 @@ def run_sim(ppc, elements, dynopt = None, events = None, recorder = None):
     print('Simulating...')
     for t in range(int(t_sim / h) + 1):
         if np.mod(t,1/h) == 0:
-            print('t=' + str(t*h) + 's')
+            print(('t=' + str(t*h) + 's'))
             
         # Interface controllers and machines
         for intf in interfaces:
@@ -148,7 +148,7 @@ def run_sim(ppc, elements, dynopt = None, events = None, recorder = None):
         # Solve differential equations
         for j in range(4):
             # Solve step of differential equations
-            for element in elements.values():
+            for element in list(elements.values()):
                 element.solve_step(h,j) 
             
             # Interface with network equations

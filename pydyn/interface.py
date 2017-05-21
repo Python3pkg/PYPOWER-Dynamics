@@ -13,7 +13,7 @@ Functions for the interface between controller and machine variables
 def init_interfaces(elements):
     ints_list = []
     
-    for element in elements.values():
+    for element in list(elements.values()):
         if element.__module__ == 'pydyn.controller':
             for line in element.equations:
                 if line[1] == 'INPUT':

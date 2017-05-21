@@ -17,7 +17,7 @@ from pypower.idx_bus import BUS_I, BUS_TYPE, PD, QD, GS, BS, BUS_AREA, \
 
 def mod_Ybus(Ybus, elements, bus, gen, baseMVA):
     # Add equivalent generator and grid admittances to Ybus matrix
-    for element in elements.values():
+    for element in list(elements.values()):
         Ye = 0
         
         # 4th/6th order machines and converters

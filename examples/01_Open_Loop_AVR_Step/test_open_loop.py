@@ -79,7 +79,7 @@ if __name__ == '__main__':
     print('Simulating...')
     for t in range(int(t_sim / h) + 1):
         if np.mod(t,1/h) == 0:
-            print('t=' + str(t*h) + 's')
+            print(('t=' + str(t*h) + 's'))
             
         # Controller and machine interfacing
         oMach.signals['Vfd'] = oCtrl.signals['Vfd']

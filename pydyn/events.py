@@ -46,7 +46,7 @@ class events:
         
         if self.event_stack:
             if self.event_stack[0][0] < t:
-                print('Event missed at t=' + str(self.event_stack[0][0]) + 's... Check simulation time step!')
+                print(('Event missed at t=' + str(self.event_stack[0][0]) + 's... Check simulation time step!'))
                 del self.event_stack[0]
             
             # Event exists at time step
@@ -60,7 +60,7 @@ class events:
                     value = float(self.event_stack[0][4])
                     elements[obj_id].signals[sig_id] = value
                     
-                    print('SIGNAL event at t=' + str(t) + 's on element "' + obj_id + '". ' + sig_id + ' = ' + str(value) + '.')
+                    print(('SIGNAL event at t=' + str(t) + 's on element "' + obj_id + '". ' + sig_id + ' = ' + str(value) + '.'))
                 
                 if event_type == 'STATE':
                     obj_id = self.event_stack[0][2]
@@ -68,7 +68,7 @@ class events:
                     value = float(self.event_stack[0][4])
                     elements[obj_id].states[sig_id] = value
                     
-                    print('STATE event at t=' + str(t) + 's on element "' + obj_id + '". ' + sig_id + ' = ' + str(value) + '.')
+                    print(('STATE event at t=' + str(t) + 's on element "' + obj_id + '". ' + sig_id + ' = ' + str(value) + '.'))
                 
                 if event_type == 'FAULT':
                     bus_id = int(self.event_stack[0][2])
@@ -93,7 +93,7 @@ class events:
                     
                     refactorise = True
                     
-                    print('FAULT event at t=' + str(t) + 's on bus at row "' + str(bus_id) + '" with fault impedance Zf = ' + str(Rf) + ' + j' + str(Xf) + ' pu.')
+                    print(('FAULT event at t=' + str(t) + 's on bus at row "' + str(bus_id) + '" with fault impedance Zf = ' + str(Rf) + ' + j' + str(Xf) + ' pu.'))
                 
                 if event_type == 'CLEAR_FAULT':
                     bus_id = int(self.event_stack[0][2])
@@ -101,14 +101,14 @@ class events:
                     ppc["bus"][bus_id, GS] = 0
                     refactorise = True
                     
-                    print('CLEAR_FAULT event at t=' + str(t) + 's on bus at row "' + str(bus_id) + '".')
+                    print(('CLEAR_FAULT event at t=' + str(t) + 's on bus at row "' + str(bus_id) + '".'))
                 
                 if event_type == 'TRIP_BRANCH':
                     branch_id = int(self.event_stack[0][2])
                     ppc["branch"] = np.delete(ppc["branch"],branch_id, 0)
                     refactorise = True
                     
-                    print('TRIP_BRANCH event at t=' + str(t) + 's on branch "' + str(branch_id) + '".')
+                    print(('TRIP_BRANCH event at t=' + str(t) + 's on branch "' + str(branch_id) + '".'))
                 
                 if event_type == 'LOAD':
                     bus_id = int(self.event_stack[0][2])
@@ -120,7 +120,7 @@ class events:
                     
                     refactorise = True
                     
-                    print('LOAD event at t=' + str(t) + 's on bus at row "' + str(bus_id) + '" with S = ' + str(Pl) + ' MW + j' + str(Ql) + ' MVAr.')
+                    print(('LOAD event at t=' + str(t) + 's on bus at row "' + str(bus_id) + '" with S = ' + str(Pl) + ' MW + j' + str(Ql) + ' MVAr.'))
                     
                 del self.event_stack[0]
                 
